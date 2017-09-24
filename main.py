@@ -11,19 +11,19 @@ form = """<!DOCTYPE html>
     <head>
         <title>Caesar Cipher</title>
         <style>
-            form {
+            form {{
                 background-color: #eee;
                 padding: 20px;
                 margin: 0 auto;
                 width: 540px;
                 font: 16px sans-serif;
                 border-radius: 10px;
-            }
-            textarea {
+            }}
+            textarea {{
                 margin: 10px 0;
                 width: 540px;
                 height: 120px;
-            }
+            }}
         </style>
     </head>
     <body>
@@ -32,6 +32,7 @@ form = """<!DOCTYPE html>
             <input type="text" name="rot" value="0"/>
         </label>
         <textarea name="text">
+            {0}
         </textarea>
         <button name="Submit query">Submit Query</button>
     </form>
@@ -47,11 +48,12 @@ def encrypt():
 
     encrypted = rotate_string(text, rot)
 
-    return encrypted
+    return form.format(encrypted)
 
 @app.route('/')
 def index():
+    n = ""
 
-    return form
+    return form.format(n)
 
 app.run()
